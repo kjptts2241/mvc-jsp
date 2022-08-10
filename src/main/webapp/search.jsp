@@ -50,18 +50,17 @@
     $("#btn").click(function(){
       var s = $("#search").val();
       $.post("news.gg",
-              {
-                search : s
-              },
-              function(data,status){
-                alert("Data: " + data + "\nStatus: " + status);
-                $.getJSON(data, function(result){
-                  $.each(data.items, function(i, field){
-                    var html = "<a href='" + field.link + "'>" + field.title + "<br>"
-                    $("#news").append(html);
-                  });
-                });
+          {
+            search : s
+          },
+          function(data,status){
+            // alert("Data: " + data + "\nStatus: " + status);
+              $.each(data.items, function(i, field){
+                var html = "<a href='" + field.link + "'>" + field.title + "<br>"
+                $("#news").append(html);
               });
+            });
+
     });
   });
 </script>
