@@ -3,58 +3,38 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-  String search = (String) request.getAttribute("search");
-  List<TbSearchDto> searchList = (List<TbSearchDto>) request.getAttribute("searchList");
-  String news = (String) request.getAttribute("news");
+//  String search = (String) request.getAttribute("search");
+//  List<TbSearchDto> searchList = (ArrayList<TbSearchDto>) request.getAttribute("searchList");
+  //String news = (String) request.getAttribute("news");
+  //System.out.println(news);
 %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>검색</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-
-<div class="container-fluid">
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a id="len1" class="hoverable" href="/main.gg">메인</a></li>
-        <li><a id="len2" class="hoverable" href="/movie.gg">영화</a></li>
-        <li><a id="len3" class="hoverable" href="/search.gg">검색</a></li>
-        <li><a id="len4" class="hoverable" href="/foodrandom.gg">음식 추천</a></li>
-      </ul>
-    </div>
-  </nav>
+<jsp:include page="header.jsp" />
   <div id="what-the-hell-is-this">
     <div class="page-title">
       <h2>뉴스 검색</h2>
 
       <p>검색을 하세요</p>
-      <form class="form-inline" action="/search.gg">
+      <div class="form-inline">
         <label for="search">검색어:</label>
-        <input type="text" class="form-control" placeholder="검색어입력" name="search">
-        <button type="submit" class="btn btn-primary">검색</button>
-      </form>
+        <input type="text" class="form-control" id="search" placeholder="검색어입력" name="search">
+        <button id="btn" type="button" class="btn btn-primary">검색</button>
+      </div>
 
       <br><br><br>
 
 
       검색 결과
-      <div></div>
+      <div id="news"></div>
 
       <br><br><br>
 
-      현재 검색: <span id="search"><%=search %></span><br><br>
+<%--      현재 검색: <span id="search"><%=search %></span><br><br>--%>
 
-      <%for (TbSearchDto d : searchList) { %>
-      검색어 : <%=d.getSearch() %>(<%=d.getCnt()%>)<br>
-      <% } %>
-      <br>
+<%--      <%for (TbSearchDto d : searchList) { %>--%>
+<%--      검색어 : <%=d.getSearch() %>(<%=d.getCnt()%>)<br>--%>
+<%--      <% } %>--%>
+<%--      <br>--%>
 
 
     </div>
@@ -65,15 +45,23 @@
 <script src="js/index.js"></script>
 
 <script>
+
   $(document).ready(function(){
-    var s = '<%=search %>';
-    var result = '<%=news %>';
-    alert(s);
-    $.getJSON("/search.gg", function(result){
-      $.each(result.items, function(i, field){
-        var html = "<a href='" + field.link + "'>" + field.title + "<br>"
-        $("div").append(html);
-      });
+    $("#btn").click(function(){
+      var s = $("#search").val();
+      $.post("news.gg",
+              {
+                search : s
+              },
+              function(data,status){
+                alert("Data: " + data + "\nStatus: " + status);
+                $.getJSON(data, function(result){
+                  $.each(data.items, function(i, field){
+                    var html = "<a href='" + field.link + "'>" + field.title + "<br>"
+                    $("#news").append(html);
+                  });
+                });
+              });
     });
   });
 </script>
