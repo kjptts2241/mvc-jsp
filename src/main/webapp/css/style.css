@@ -96,7 +96,7 @@
   
   nav {
     background: none !important;
-    text-transform:uppercase;
+    text-transform: uppercase;
     li {
       margin-left: 3em;
       margin-right: 3em;
@@ -109,5 +109,4 @@
   .page-title {
     opacity: .75 !important;
   }
-  
   
