@@ -3,8 +3,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
+  String search = (String) request.getAttribute("search");
   List<TbSearchDto> searchList = (List<TbSearchDto>) request.getAttribute("searchList");
-  String search = request.getAttribute("search").toString();
+  String news = (String) request.getAttribute("news");
 %>
 
 <!DOCTYPE html>
@@ -42,15 +43,18 @@
 
       <br><br><br>
 
+
+      검색 결과
+      <div></div>
+
+      <br><br><br>
+
       현재 검색: <span id="search"><%=search %></span><br><br>
 
       <%for (TbSearchDto d : searchList) { %>
       검색어 : <%=d.getSearch() %>(<%=d.getCnt()%>)<br>
       <% } %>
       <br>
-
-      <div></div>
-
 
 
     </div>
@@ -62,8 +66,10 @@
 
 <script>
   $(document).ready(function(){
-    alert(<%=search %>);
-    $.getJSON("search.gg?search=" + <%=search %>, function(result){
+    var s = '<%=search %>';
+    var result = '<%=news %>';
+    alert(s);
+    $.getJSON("/search.gg", function(result){
       $.each(result.items, function(i, field){
         var html = "<a href='" + field.link + "'>" + field.title + "<br>"
         $("div").append(html);

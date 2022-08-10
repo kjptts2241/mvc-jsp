@@ -27,14 +27,15 @@ public class SearchServlet extends HttpServlet {
         String search = request.getParameter("search");
 
         SearchDao dao = new SearchDaoImpl();
-
         List<TbSearchDto> searchList = dao.search(search);
-        //String news = dao.newsApi(search);
+
+        String news = dao.newsApi(search);
+        System.out.println(news);
 
         RequestDispatcher dis = request.getRequestDispatcher("search.jsp");
-        request.setAttribute("searchList", searchList);
         request.setAttribute("search", search);
-        //request.setAttribute("news", news);
+        request.setAttribute("searchList", searchList);
+        request.setAttribute("news", news);
         dis.forward(request, response);
     }
 
