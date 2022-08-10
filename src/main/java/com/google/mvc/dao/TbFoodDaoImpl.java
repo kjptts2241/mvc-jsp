@@ -40,7 +40,6 @@ public class TbFoodDaoImpl implements TbFoodDao {
 
     @Override
     public TbFoodDto findRandOne() {
-        dbConn();
         TbFoodDto dto = new TbFoodDto();
 
         PreparedStatement pstmt = null;
