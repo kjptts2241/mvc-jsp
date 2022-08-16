@@ -83,4 +83,43 @@ public class TbFoodDaoImpl implements TbFoodDao {
     public void update() {
 
     }
+
+    @Override
+    public List<TbFoodDto> findAll() {
+        List<TbFoodDto> list = new ArrayList<>();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Connection conn = dbConn();
+        try {
+            String sql = "SELECT * FROM tb_food";
+
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                TbFoodDto dto = new TbFoodDto();
+                dto.setId(rs.getInt("id"));
+                dto.setName(rs.getString("name"));
+                dto.setImg(rs.getString("img"));
+                list.add(dto);
+            }
+        } catch (SQLException e) {
+            System.out.println("error: " + e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+
+                if (conn != null && !conn.isClosed()) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
 }

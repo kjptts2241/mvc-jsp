@@ -15,11 +15,11 @@
 
       <p>검색을 하세요</p>
       <from action="/SearchServlet">
-      <div class="form-inline">
-        <label for="search">검색어:</label>
-        <input type="text" class="form-control" id="search" placeholder="검색어입력" name="search">
-        <button id="btn" type="button" class="btn btn-primary">검색</button>
-      </div>
+        <div class="form-inline">
+          <label for="search">검색어:</label>
+          <input type="text" class="form-control" id="search" placeholder="검색어입력" name="search">
+          <button id="btn" type="button" class="btn btn-primary">검색</button>
+        </div>
       </from>
 
       <br><br><br>

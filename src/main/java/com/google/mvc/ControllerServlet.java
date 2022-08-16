@@ -52,7 +52,7 @@ public class ControllerServlet extends HttpServlet {
             path = "/FoodRandomServlet";
         } else if (URI.equals("/foodlist.gg")) {
             // out.println("<br>음식 리스트 페이지");
-            path = "/foodlist.jsp";
+            path = "/FoodListServlet";
         } else if (URI.equals("/login.gg")) {
             // out.println("<br>로그인 페이지");
             path = "login.jsp";
