@@ -47,13 +47,13 @@ public class ControllerServlet extends HttpServlet {
         } else if (URI.equals("/foodlist.gg")) {
             path = "/FoodListServlet";
         } else if (URI.equals("/savefood.gg")) {
-            String menuname = request.getParameter("menuname");
-            System.out.println(menuname);
             path = "/SaveFoodServlet";
         } else if (URI.equals("/login.gg")) {
             path = "login.jsp";
         } else if (URI.equals("/loginok.gg")) {
             path = "/LoginOkServlet";
+        } else if (URI.equals("/logout.gg")) {
+            path = "/main.jsp";
         } else {
             out.println("<br>오류 페이지");
             path = "404.jsp";

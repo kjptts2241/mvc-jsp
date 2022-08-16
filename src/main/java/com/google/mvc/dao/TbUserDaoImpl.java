@@ -3,49 +3,37 @@ package com.google.mvc.dao;
 import com.google.mvc.dto.TbFoodDto;
 import com.google.mvc.dto.TbUserDto;
 
+import javax.sound.midi.Soundbank;
 import java.sql.*;
 
 public class TbUserDaoImpl implements TbUserDao{
-    public Connection dbConn() {
-        final String driver = "org.mariadb.jdbc.Driver";
-        final String DB_IP = "localhost";
-        final String DB_PORT = "3306";
-        final String DB_NAME = "dbdb";
-        final String DB_URL =
-                "jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
-        Connection conn = null;
-
-        try {
-            Class.forName(driver);
-            conn = DriverManager.getConnection(DB_URL, "root", "1234");
-            if (conn != null) {
-                System.out.println("DB 접속 성공");
-            }
-
-        } catch (ClassNotFoundException e) {
-            System.out.println("드라이버 로드 실패");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.out.println("DB 접속 실패");
-            e.printStackTrace();
-        }
-        return conn;
-    }
-
 
     @Override
-    public int findEmailPw(TbUserDto dto) {
-        int result = 0; // 로그인 성공 여부
+    public void save() {
+
+    }
+
+    @Override
+    public TbUserDto findEmailPw(String email, String userPw) {
+        TbUserDto dto = null;
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        Connection conn = dbConn();
+        Connection conn = DB.conn();
         try {
-            String sql = "SELECT * FROM `game` WHERE userid = ? AND userpw = ?;";
+            String sql = "SELECT * FROM `tb_user` WHERE email = ? AND userpw = ?";
 
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, dto.getEmail());
-            pstmt.setString(2, dto.getUserpw());
+            pstmt.setString(1, email);
+            pstmt.setString(2, userPw);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                dto = new TbUserDto();
+                dto.setId(rs.getInt("id"));
+                dto.setEmail(rs.getString("email"));
+                dto.setUserPw(rs.getString("userpw"));
+                dto.setName(rs.getString("name"));
+            }
 
         } catch (SQLException e) {
             System.out.println("error: " + e);
@@ -65,6 +53,6 @@ public class TbUserDaoImpl implements TbUserDao{
                 e.printStackTrace();
             }
         }
-        return result;
+        return dto;
     }
 }

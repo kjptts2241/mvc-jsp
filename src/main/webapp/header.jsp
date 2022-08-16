@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+  String userName = (String) session.getAttribute("username");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,12 @@
         <li><a id="len3" class="hoverable" href="/search.gg">검색</a></li>
         <li><a id="len4" class="hoverable" href="/foodrandom.gg">음식 추천</a></li>
         <li><a id="len5" class="hoverable" href="/foodlist.gg">음식 리스트</a></li>
-        <li><a id="len6" class="hoverable" href="/login.gg">로그인</a></li>
+        <% if (userName == null) {%>
+          <li><a id="len6" class="hoverable" href="/login.gg">로그인</a></li>
+        <% } else { %>
+          <li><a id="len6" class="hoverable" href="/logout.gg">로그아웃</a></li>
+          <li><a id="len7" class="hoverable" href="#"><%=userName %> 님</a></li>
+        <% } %>
       </ul>
     </div>
   </nav>

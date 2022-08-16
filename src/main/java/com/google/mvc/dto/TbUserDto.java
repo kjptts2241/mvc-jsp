@@ -3,7 +3,8 @@ package com.google.mvc.dto;
 public class TbUserDto {
     private int id;
     private String email;
-    private String userpw;
+    private String userPw;
+    private String name;
 
     public int getId() {
         return id;
@@ -21,11 +22,19 @@ public class TbUserDto {
         this.email = email;
     }
 
-    public String getUserpw() {
-        return userpw;
+    public String getUserPw() {
+        return userPw;
     }
 
-    public void setUserpw(String userpw) {
-        this.userpw = userpw;
+    public void setUserPw(String userPw) {
+        this.userPw = userPw;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -1,19 +1,22 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.google.mvc.dto.TbFoodDto" %>
 <%@ page import="java.util.ArrayList" %>
-
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="header.jsp" %>
 <%
   List<TbFoodDto> list = (ArrayList<TbFoodDto>)request.getAttribute("foodlist");
+
 %>
-<jsp:include page="header.jsp" />
+
 <div id="what-the-hell-is-this">
   <div class="page-title">
     <h2>입력된 음식 리스트</h2>
   </div>
-    <div align="left">
-      <button type="button" class="btn btn-danger" id="myBtn">메뉴추가</button>
-    </div>
+    <% if (userName != null) {%>
+      <div align="left">
+        <button type="button" class="btn btn-danger" id="myBtn">메뉴추가</button>
+      </div>
+    <% } %>
     <table class="table table-dark table-hover">
       <thead>
       <tr>
