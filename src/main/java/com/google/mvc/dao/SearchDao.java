@@ -7,5 +7,4 @@ import java.util.List;
 public interface SearchDao {
 
     public List<TbSearchDto> search(String search);
-    public String newsApi(String search);
 }

@@ -34,7 +34,8 @@ public class TbUserDaoImpl implements TbUserDao{
 
 
     @Override
-    public TbUserDto findEmailPw(TbUserDto dto) {
+    public int findEmailPw(TbUserDto dto) {
+        int result = 0; // 로그인 성공 여부
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -64,6 +65,6 @@ public class TbUserDaoImpl implements TbUserDao{
                 e.printStackTrace();
             }
         }
-        return dto;
+        return result;
     }
 }

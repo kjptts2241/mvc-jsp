@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.mvc.dao.SearchDao;
 import com.google.mvc.dao.SearchDaoImpl;
 import com.google.mvc.dto.TbSearchDto;
+import com.google.mvc.utils.NaverApiSearch;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,8 +24,7 @@ public class SearchNewsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String search = request.getParameter("search");
-        SearchDao dao = new SearchDaoImpl();
-        String json = dao.newsApi(search);
+        String json = NaverApiSearch.newsApi(search);
 
         response.setContentType("application/json; charset=UTF-8"); // reponse json / UTF-8
         response.setCharacterEncoding("UTF-8");

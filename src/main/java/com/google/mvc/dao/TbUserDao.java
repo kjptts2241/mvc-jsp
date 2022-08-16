@@ -4,5 +4,5 @@ import com.google.mvc.dto.TbFoodDto;
 import com.google.mvc.dto.TbUserDto;
 
 public interface TbUserDao {
-    public TbUserDto findEmailPw(TbUserDto dto);
+    public int findEmailPw(TbUserDto dto);
 }

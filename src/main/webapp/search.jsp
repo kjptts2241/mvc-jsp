@@ -14,7 +14,7 @@
       <h2>뉴스 검색</h2>
 
       <p>검색을 하세요</p>
-      <from action="/SearchServlet">
+      <from method="post" action="/search.gg">
         <div class="form-inline">
           <label for="search">검색어:</label>
           <input type="text" class="form-control" id="search" placeholder="검색어입력" name="search">
@@ -25,7 +25,7 @@
       <br><br><br>
 
 
-      검색 결과
+      검색 결과<br><br>
       <div id="news"></div>
 
       <br><br><br>

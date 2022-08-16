@@ -35,7 +35,7 @@ public class TbFoodDaoImpl implements TbFoodDao {
 
     @Override
     public int save(TbFoodDto dto) {
-        int result = 0; // 저장 성공 여부
+        int result = 0; // 음식 저장 성공 여부
         System.out.println(dto);
 
         PreparedStatement pstmt = null;
