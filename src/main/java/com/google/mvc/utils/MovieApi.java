@@ -1,4 +1,4 @@
-package com.google.mvc.dao;
+package com.google.mvc.utils;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,10 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieDaoImpl implements MovieDao{
-
-    @Override
-    public List<String> movieApi() {
+public class MovieApi {
+    public static List<String> movieApi() {
         List<String> list = new ArrayList<>();
         String URL = "https://movie.naver.com/movie/sdb/rank/rmovie.naver";
         Document doc = null;

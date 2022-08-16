@@ -6,6 +6,7 @@ import com.google.mvc.dao.MovieDao;
 import com.google.mvc.dao.MovieDaoImpl;
 import com.google.mvc.dao.TbFoodDao;
 import com.google.mvc.dao.TbFoodDaoImpl;
+import com.google.mvc.utils.MovieApi;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -19,8 +20,8 @@ import java.util.List;
 public class MovieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        MovieDao dao = new MovieDaoImpl();
-        List<String> movieList = dao.movieApi();
+        // MovieDao dao = new MovieDaoImpl();
+        List<String> movieList = MovieApi.movieApi();
         for (String m: movieList) {
             System.out.println(m);
         }

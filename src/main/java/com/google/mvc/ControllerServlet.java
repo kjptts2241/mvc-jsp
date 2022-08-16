@@ -39,6 +39,11 @@ public class ControllerServlet extends HttpServlet {
         } else if (URI.equals("/movie.gg")) {
             path = "/MovieServlet";
         } else if (URI.equals("/search.gg")) {
+            path = "search.jsp";
+        } else if (URI.equals("/searchList.gg")) {
+            System.out.println("ㅇㅇㅇㅇㅇㅇㅇ");
+            String search = request.getParameter("search");
+            System.out.println(search);
             path = "/SearchServlet";
         } else if (URI.equals("/news.gg")) {
             path = "/SearchNewsServlet";
