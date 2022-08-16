@@ -53,7 +53,7 @@ public class ControllerServlet extends HttpServlet {
         } else if (URI.equals("/loginok.gg")) {
             path = "/LoginOkServlet";
         } else if (URI.equals("/logout.gg")) {
-            path = "/main.jsp";
+            path = "/logout.jsp";
         } else {
             out.println("<br>오류 페이지");
             path = "404.jsp";
