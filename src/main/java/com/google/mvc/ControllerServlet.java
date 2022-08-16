@@ -46,7 +46,9 @@ public class ControllerServlet extends HttpServlet {
             path = "/FoodRandomServlet";
         } else if (URI.equals("/foodlist.gg")) {
             path = "/FoodListServlet";
-        }  else if (URI.equals("/savefood.gg")) {
+        } else if (URI.equals("/savefood.gg")) {
+            String menuname = request.getParameter("menuname");
+            System.out.println(menuname);
             path = "/SaveFoodServlet";
         } else if (URI.equals("/login.gg")) {
             path = "login.jsp";

@@ -36,11 +36,12 @@ public class TbFoodDaoImpl implements TbFoodDao {
     @Override
     public int save(TbFoodDto dto) {
         int result = 0; // 저장 성공 여부
+        System.out.println(dto);
 
         PreparedStatement pstmt = null;
         Connection conn = dbConn();
         try {
-            String sql = "INSERT INTO `dbdb`.`tb_food` (`name`, `img`) VALUES (?, ?);";
+            String sql = "INSERT INTO `tb_food` (`name`, `img`) VALUES (?, ?)";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, dto.getName());

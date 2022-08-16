@@ -2,7 +2,10 @@ package com.google.mvc.service;
 
 import com.google.mvc.dao.TbFoodDao;
 import com.google.mvc.dao.TbFoodDaoImpl;
+import com.google.mvc.dao.TbUserDao;
+import com.google.mvc.dao.TbUserDaoImpl;
 import com.google.mvc.dto.TbFoodDto;
+import com.google.mvc.dto.TbUserDto;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,16 +20,15 @@ public class LoginOkServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String email = request.getParameter("email");
-        String userpw = request.getParameter("userpw");
-        System.out.println(email + userpw);
+        TbUserDto dto = new TbUserDto();
+        dto.setEmail(request.getParameter("email"));
+        dto.setUserpw(request.getParameter("userpw"));
 
-        TbFoodDao dao = new TbFoodDaoImpl();
-        int result = dao.save(dto);
-        // ajax에 result 정보 전달
+        TbUserDao dao = new TbUserDaoImpl();
+        dao.findEmailPw(dto);
 
-        PrintWriter out = response.getWriter();
-        out.println(result); // 0이면 실패, 1이면 성공
+        //PrintWriter out = response.getWriter();
+        //out.println(result); // 0이면 실패, 1이면 성공
     }
 
     @Override

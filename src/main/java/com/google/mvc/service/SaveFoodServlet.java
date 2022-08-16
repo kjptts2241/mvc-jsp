@@ -23,7 +23,7 @@ public class SaveFoodServlet extends HttpServlet {
         String imgsrc = request.getParameter("imgsrc");
         TbFoodDto dto = new TbFoodDto();
         dto.setName(menuname);
-        dto.setName(imgsrc);
+        dto.setImg(imgsrc);
 
         TbFoodDao dao = new TbFoodDaoImpl();
         int result = dao.save(dto);
