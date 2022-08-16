@@ -34,8 +34,35 @@ public class TbFoodDaoImpl implements TbFoodDao {
     }
 
     @Override
-    public void save() {
+    public int save(TbFoodDto dto) {
+        int result = 0; // 저장 성공 여부
 
+        PreparedStatement pstmt = null;
+        Connection conn = dbConn();
+        try {
+            String sql = "INSERT INTO `dbdb`.`tb_food` (`name`, `img`) VALUES (?, ?);";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, dto.getName());
+            pstmt.setString(2, dto.getImg());
+            result = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("error: " + e);
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+
+                if (conn != null && !conn.isClosed()) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 
     @Override

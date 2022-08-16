@@ -37,25 +37,21 @@ public class ControllerServlet extends HttpServlet {
             // out.println("<br>메인 페이지");
             path = "main.jsp";
         } else if (URI.equals("/movie.gg")) {
-            // out.println("<br>영화 정보 페이지");
             path = "/MovieServlet";
         } else if (URI.equals("/search.gg")) {
-            // out.println("<br>검색 페이지");
-            String search = request.getParameter("search");
-            System.out.println(search);
             path = "/SearchServlet";
         } else if (URI.equals("/news.gg")) {
-            // out.println("<br>뉴스 결과 JSON 페이지");
             path = "/SearchNewsServlet";
         } else if (URI.equals("/foodrandom.gg")) {
-            // out.println("<br>음식을 랜덤으로 골라주는 페이지");
             path = "/FoodRandomServlet";
         } else if (URI.equals("/foodlist.gg")) {
-            // out.println("<br>음식 리스트 페이지");
             path = "/FoodListServlet";
+        }  else if (URI.equals("/savefood.gg")) {
+            path = "/SaveFoodServlet";
         } else if (URI.equals("/login.gg")) {
-            // out.println("<br>로그인 페이지");
             path = "login.jsp";
+        } else if (URI.equals("/loginok.gg")) {
+            path = "/LoginOkServlet";
         } else {
             out.println("<br>오류 페이지");
             path = "404.jsp";

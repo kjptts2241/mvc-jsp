@@ -5,7 +5,7 @@ import com.google.mvc.dto.TbFoodDto;
 import java.util.List;
 
 public interface TbFoodDao {
-    public void save();
+    public int save(TbFoodDto dto);
     public TbFoodDto findRandOne();
     public void update();
 
