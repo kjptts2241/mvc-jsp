@@ -31,7 +31,7 @@
 
 <script>
   $(document).ready(function(){
-    $.getJSON("/movie.gg", function(result){
+    $.getJSON("/movieList.gg", function(result){
       var html
       $.each(result, function(i, field){
         console.log(field);

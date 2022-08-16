@@ -2,8 +2,6 @@ package com.google.mvc.service;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.mvc.dao.MovieDao;
-import com.google.mvc.dao.MovieDaoImpl;
 import com.google.mvc.dao.SearchDao;
 import com.google.mvc.dao.SearchDaoImpl;
 import com.google.mvc.dto.TbSearchDto;
